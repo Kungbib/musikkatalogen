@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Musikkatalogen</h1>
+          <p>Digitaliserad version av korten i Kungliga Bibliotekets musikkatalog.</p>
+        </div>
+       </div>
+      <div class="row">
+        <div class="col-md-8">
+          <h2>Sök i katalogen</h2>
+          <p>Observera att sökningen sker i det automattolkade textunderlaget. Flera av korten är handskrivna och går inte att söka i.</p>
+          <form class="form-inline global-search" action="/search/" role="form">
+              <div class="form-group" class="col-xs-8">
+                  <label class="sr-only" for="q">Sök efter</label>
+                  <input type="text" class="form-control" id="q" name="q" value="{{query}}" style="width:300px" placeholder="Ange sökord">
+              </div>
+              <button type="submit" id="s" class="btn btn-primary">Sök <i class="glyphicon glyphicon-search"></i></button>
+          </form>
+        </div>
+        <div class="col-md-4">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Alfabetiskt index</h2>
+          <p>Utgå från det alfabetiska indexet för att verk av en specifik upphovsman (första bokstaven i efternamnet).</p>
+          <ul class="pagination pagination-sm">
+            {% for card in index_cards %}
+            <li>
+            <a href="{% url "cardurl" card.box.catalog.slug card.box.sequence_number card.catalog_sequence_number %}">{{card.letter}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Systematiskt index</h2>
+          <p>Hitta verk av en speciell typ (ej lanserat än)</p>
+        </div>
+      </div>
+
+      {% include "_footer.html" %}
+
+{% endblock %}

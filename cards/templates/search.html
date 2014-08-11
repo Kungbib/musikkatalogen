@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+      <div class="row">
+        <div class="col-md-12" style="text-align:center">
+          <h1>Sök i katalogen</h1>
+          <p>OBS. Fritextsökningen sker i maskinellt tolkad text. Det innebär att handskrivna kort inte ingår i underlaget och att många poster kan missas.</p>
+
+          <form class="form-inline global-search" action="/search/" role="form">
+              <div class="form-group">
+                  <label class="sr-only" for="q">Sök efter</label>
+                  <input type="search" class="form-control" id="q" name="q" value="{{query}}" placeholder="Ange sökord">
+              </div>
+              <button type="submit" id="s" class="btn btn-primary">Sök <i class="glyphicon glyphicon-search"></i>
+              </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+        {% if result %}
+          <h2 id="result">Sökresultat</h2>
+          <table id="result" class="table table-striped">
+            <tr>
+              <th>Kortnr</th>
+              <th>Text</th>
+              <th>Låda</th>
+            </tr>
+            {% for card in result %}
+            <tr>
+              <td>{{card.catalog_sequence_number}}</td>
+              <td><a href="{% url "cardurl" card.box.catalog.slug card.box.sequence_number card.catalog_sequence_number %}">{{card.ocr_text}}</a></td>
+              <td>{{card.box.label}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        {% else %}
+        <div class="center-block bg-warning" style="text-align:center;padding:6px;margin-top:1em">
+          <h2>Inga kort hittades för det angivna sökbegreppet</h2>
+          <p>Textunderlaget är automatiskt tolkat från vissa av korten och sökningen sker därför inte över alla kort. Sök på ett enstaka ord för bästa resultat.</p>
+        </div>
+
+        {% endif %}
+        </div>
+      </div>
+
+      {% include "_footer.html" %}
+{% endblock %}

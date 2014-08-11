@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+      <div class="row">
+        <div class="col-md-12" style="text-align:center">
+          <ul class="pagination pagination-lg">
+            <li>
+            {% if previous10_card %}
+              <a href="{% url "cardurl" previous10_card.box.catalog.slug previous10_card.box.sequence_number previous10_card.catalog_sequence_number %}">-10</a>
+            {% else %}
+              <a href="#" class="disabled">-10</a>
+            {% endif %}
+            </li>
+            <li>
+            {% if previous_card %}
+              <a href="{% url "cardurl" previous_card.box.catalog.slug previous_card.box.sequence_number previous_card.catalog_sequence_number %}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            {% else %}
+              <a href="#"><span class="disabled glyphicon glyphicon-chevron-left"></span></a>
+            {% endif %}
+           </li>
+           <li>
+            {% if next_card %}
+              <a href="{% url "cardurl" next_card.box.catalog.slug next_card.box.sequence_number next_card.catalog_sequence_number %}"><span class="glyphicon glyphicon-chevron-right"></span></a>
+            {% else %}
+              <a href="#"><span class="disabled glyphicon glyphicon-chevron-right"></span></a>
+            {% endif %}
+            </li>
+            <li>
+            {% if next10_card %}
+              <a href="{% url "cardurl" next10_card.box.catalog.slug next10_card.box.sequence_number next10_card.catalog_sequence_number %}">+10</a>
+            {% else %}
+              <a href="#" class="disabled">+10</span></a>
+            {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h2>Låda {{card.box.label}}</h2>
+          <ul class="list-unstyled box">
+            {% for c in box_cards %}
+              <li>
+              {% if c.catalog_sequence_number = card.catalog_sequence_number %}
+              <a href="{% url "cardurl" c.box.catalog.slug c.box.sequence_number c.catalog_sequence_number %}" class="selected">#{{c.catalog_sequence_number}}: {{c.name}}</a>
+              {% else %}
+              <a href="{% url 'cardurl' c.box.catalog.slug c.box.sequence_number c.catalog_sequence_number %}">{{c.catalog_sequence_number}}: {{c.name}}</a>
+              {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-6 card" style="text-align:center">
+          <h1>Kort #{{card.catalog_sequence_number}}{% if card.name %}: {{card.name}}{% endif %}</h1>
+          <a href="/static/alfa/{{fullres_image_url}}"><img src="/static/alfa/{{image_url}}" style="width:400px" alt="{{card.ocr_text}}"></a>
+        </div>
+        <div class="col-md-3">
+          {% if card.ocr_text %}
+          <h2>OCR-text</h2>
+          <p>{{card.ocr_text|linebreaks}}</p>
+
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              Konstig text ovan?
+            </div>
+            <div class="panel-body">
+              <p>Den automatiska konverteringen kan ha skapat felaktiga tecken.</p>
+            </div>
+          </div>
+          <hr>
+          {% endif %}
+          <p>Låda: <a href="/box/{{card.box.sequence_number}}/">{{card.box.label}}</a></p>
+          <p>Bildfil: {{card.filename}}</p>
+          <p>Uppdaterad: {{card.updated_at}}</p>
+        </div>
+      </div>
+
+      {% include "_footer.html" %}
+
+{% endblock %}
