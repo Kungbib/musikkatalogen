@@ -19,30 +19,30 @@ class Command(BaseCommand):
         path = args[0]
         catalog_slug = args[1]
 
-        self.stdout.write('Importing "%s" to catalog %s' % (path, catalog_slug))
+        self.stdout.write(u'Importing "%s" to catalog %s' % (path, catalog_slug))
 
         #check if path exists
         if not os.path.isdir(path):
-            raise CommandError("Path %s does not exist" % path)
+            raise CommandError(u"Path %s does not exist" % path)
 
         # check if catalog exists
         try:
             catalog = Catalog.objects.get(slug = catalog_slug)
         except Catalog.DoesNotExist:
             # abort everything
-            self.stdout.write("No catalog object found with slug %s. Unable to import box." % catalog_slug)
+            self.stdout.write(u"No catalog object found with slug %s. Unable to import box." % catalog_slug)
             raise
 
         #get folder name
         folder = os.path.split(path)[-1]
 
-        self.stdout.write('Importing "%s"' % folder)
+        self.stdout.write(u'Importing "%s"' % folder)
 
         #check if folder name exists
         try:
             box = Box.objects.get(folder_name=folder, catalog=catalog)
 
-            self.stdout.write('Loaded existing box "%s"' % box.id)
+            self.stdout.write(u'Loaded existing box "%s"' % box.id)
         except Box.DoesNotExist:
 
             # make it - assumes folder name
@@ -60,7 +60,7 @@ class Command(BaseCommand):
                     catalog=catalog)
             box.save()
 
-            self.stdout.write('Created box "%s"' % box.id)
+            self.stdout.write(u'Created box "%s"' % box.id)
 
 
         #import folder content and create cards
@@ -88,6 +88,6 @@ class Command(BaseCommand):
                         card.ocr_text=ocr_text
                         card.name=ocr_text.split("\n")[0].strip()
                     else:
-                        card.name="%s [handskrivet]" % box.label
+                        card.name=u"%s [handskrivet]" % box.label
 
                     card.save()
