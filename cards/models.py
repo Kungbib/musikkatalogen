@@ -9,6 +9,7 @@ class Catalog(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_alpha = models.BooleanField(default=False)
 
+
     class Meta:
         verbose_name = u"Katalog"
         verbose_name_plural = u"Kataloger"
@@ -42,8 +43,26 @@ class Card(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    name_tr = models.CharField(max_length=255, db_index=True)
+    arr_tr = models.CharField(max_length=255, db_index=True)
+    pseudonym_tr = models.CharField(max_length=255, db_index=True)
+    title_tr = models.CharField(max_length=255, db_index=True)
+    comment = models.TestField()
+
+    signum = models.ForeignKey(Signum, related_name="cards")
+
     class Meta:
         verbose_name = u"Kort"
         verbose_name_plural = u"Kort"
+
 	ordering = ['catalog_sequence_number']
 
+
+class Classification(models.Model):
+    name = models.CharField(max_length=255, db_index=True)
+    description = models.TextField()
+    slug = models.SlugField(max_length=50, unique=True)
+
+    class Meta:
+        verbose_name = u"Signum"
+        verbose_name_plural = u"Signum"
