@@ -46,23 +46,23 @@ class Box(models.Model):
 
 
 class Card(models.Model):
-    name = models.CharField(max_length=255, db_index=True) #(first line from OCR)
-    filename = models.CharField(max_length=255)
-    ocr_text = models.TextField()
+    name = models.CharField(max_length=255, db_index=True)
+    filename = models.CharField(max_length=255, db_index=True)
+    ocr_text = models.TextField(blank=True)
     letter = models.CharField(max_length=1, null=True, blank=True, db_index=True)
     sequence_number = models.IntegerField(db_index=True)
     catalog_sequence_number = models.IntegerField(null=True, blank=True)
     box = models.ForeignKey(Box, related_name="cards")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    signum = models.ForeignKey(Signum, related_name="cards")
+    signum = models.ForeignKey(Signum, related_name="cards", null=True, blank=True)
 
-    # Fields with manual transcriptions
-    name_tr = models.CharField(max_length=255, db_index=True)
-    arr_tr = models.CharField(max_length=255, db_index=True)
-    pseudonym_tr = models.CharField(max_length=255, db_index=True)
-    title_tr = models.CharField(max_length=255, db_index=True)
-    comment = models.TextField()
+    # Fields with manual transcription data
+    name_tr = models.CharField(max_length=255, db_index=True, blank=True)
+    arr_tr = models.CharField(max_length=255, db_index=True, blank=True)
+    pseudonym_tr = models.CharField(max_length=255, db_index=True, blank=True)
+    title_tr = models.CharField(max_length=255, db_index=True, blank=True)
+    comment = models.TextField(blank=True)
 
     # readonly field to show preview pic in django admin interface
     def image_tag(self):
