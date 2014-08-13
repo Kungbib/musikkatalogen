@@ -42,6 +42,23 @@
           <a href="/static/alfa/{{fullres_image_url}}"><img src="/static/alfa/{{image_url}}" style="width:400px" alt="{{card.name}} {{card.ocr_text}}"></a>
         </div>
         <div class="col-md-3">
+          <dl>
+          {% if card.arr_tr %}
+          <dt>Arrangemang:</dt>
+          <dd>{{card.arr_tr}}</dd>
+          {% endif %}
+
+          {% if card.pseudonym_tr %}
+          <dt>Pseudonym:</dt>
+          <dd>{{card.pseudonym_tr}}</dd>
+          {% endif %}
+
+          {% if card.title_tr %}
+          <dt>Verk:</dt>
+          <dd>{{card.title_tr}}</dd>
+          {% endif %}
+          </dl>
+
           {% if card.ocr_text %}
           <h2>OCR-text</h2>
           <p>{{card.ocr_text|linebreaks}}</p>
