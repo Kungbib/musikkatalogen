@@ -5,7 +5,9 @@ from cards.models import *
 
 class CardAdmin(admin.ModelAdmin):
     list_display = ('name', 'box_name', 'order', 'catalog_sequence_number', 'filename', 'ocr_text', 'letter', 'updated_at')
-    search_fields = ['name', 'ocr_text']
+    search_fields = ['catalog_sequence_number', 'filename', 'name', 'ocr_text']
+
+    readonly_fields = ('image_tag',)
 
     def order(self, instance):
         return str(instance.box.slug) + "-" + str(instance.sequence_number)
@@ -26,6 +28,14 @@ class CatalogAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
 
 
+class SignumAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug', 'description')
+    prepopulated_fields = {"slug": ("name",)}
+
+
+
 admin.site.register(Card, CardAdmin)
 admin.site.register(Box, BoxAdmin)
 admin.site.register(Catalog, CatalogAdmin)
+admin.site.register(Signum, SignumAdmin)
+

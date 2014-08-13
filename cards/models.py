@@ -16,6 +16,17 @@ class Catalog(models.Model):
 
 
 
+class Signum(models.Model):
+    name = models.CharField(max_length=255, db_index=True)
+    description = models.TextField()
+    slug = models.SlugField(max_length=50, unique=True)
+
+    class Meta:
+        verbose_name = u"Signum"
+        verbose_name_plural = u"Signum"
+
+
+
 class Box(models.Model):
     folder_name = models.CharField(max_length=255, unique=True)
     sequence_number = models.IntegerField(db_index=True)
@@ -64,14 +75,3 @@ class Card(models.Model):
         verbose_name_plural = u"Kort"
 
 	ordering = ['catalog_sequence_number']
-
-
-
-class Classification(models.Model):
-    name = models.CharField(max_length=255, db_index=True)
-    description = models.TextField()
-    slug = models.SlugField(max_length=50, unique=True)
-
-    class Meta:
-        verbose_name = u"Signum"
-        verbose_name_plural = u"Signum"
