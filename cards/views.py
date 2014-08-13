@@ -21,7 +21,11 @@ def search(request):
         query = request.GET.get('q', None).strip()
         if query:
             #result = Card.objects.filter(ocr_text__icontains=query)[:100]
-            result = Card.objects.filter( Q(ocr_text__icontains=query) | Q(name__icontains=query) )[:100]
+            result = Card.objects.filter( Q(ocr_text__icontains=query) |
+                    Q(name__icontains=query) |
+                    Q(arr_tr__icontains=query) |
+                    Q(pseudonym_tr__icontains=query) |
+                    Q(title_tr__icontains=query))[:100]
         else:
             result = None
 

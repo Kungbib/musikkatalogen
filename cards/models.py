@@ -58,11 +58,11 @@ class Card(models.Model):
     signum = models.ForeignKey(Signum, related_name="cards", null=True, blank=True)
 
     # Fields with manual transcription data
-    name_tr = models.CharField(max_length=255, db_index=True, blank=True)
-    arr_tr = models.CharField(max_length=255, db_index=True, blank=True)
-    pseudonym_tr = models.CharField(max_length=255, db_index=True, blank=True)
-    title_tr = models.CharField(max_length=255, db_index=True, blank=True)
-    comment = models.TextField(blank=True)
+    name_tr = models.CharField(max_length=255, db_index=True, blank=True, null=True)
+    arr_tr = models.CharField(max_length=255, db_index=True, blank=True, null=True)
+    pseudonym_tr = models.CharField(max_length=255, db_index=True, blank=True, null=True)
+    title_tr = models.CharField(max_length=255, db_index=True, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
 
     # readonly field to show preview pic in django admin interface
     def image_tag(self):

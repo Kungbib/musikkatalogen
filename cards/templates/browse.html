@@ -37,23 +37,9 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3">
-          <h2>Låda {{card.box.label}}</h2>
-          <ul class="list-unstyled box">
-            {% for c in box_cards %}
-              <li>
-              {% if c.catalog_sequence_number = card.catalog_sequence_number %}
-              <a href="{% url "cardurl" c.box.catalog.slug c.box.sequence_number c.catalog_sequence_number %}" class="selected">#{{c.catalog_sequence_number}}: {{c.name}}</a>
-              {% else %}
-              <a href="{% url 'cardurl' c.box.catalog.slug c.box.sequence_number c.catalog_sequence_number %}">{{c.catalog_sequence_number}}: {{c.name}}</a>
-              {% endif %}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
         <div class="col-md-6 card" style="text-align:center">
           <h1>Kort #{{card.catalog_sequence_number}}{% if card.name %}: {{card.name}}{% endif %}</h1>
-          <a href="/static/alfa/{{fullres_image_url}}"><img src="/static/alfa/{{image_url}}" style="width:400px" alt="{{card.ocr_text}}"></a>
+          <a href="/static/alfa/{{fullres_image_url}}"><img src="/static/alfa/{{image_url}}" style="width:400px" alt="{{card.name}} {{card.ocr_text}}"></a>
         </div>
         <div class="col-md-3">
           {% if card.ocr_text %}
@@ -73,6 +59,20 @@
           <p>Låda: <a href="/box/{{card.box.sequence_number}}/">{{card.box.label}}</a></p>
           <p>Bildfil: {{card.filename}}</p>
           <p>Uppdaterad: {{card.updated_at}}</p>
+        </div>
+        <div class="col-md-3">
+          <h2>Låda {{card.box.label}}</h2>
+          <ul class="list-unstyled box">
+            {% for c in box_cards %}
+              <li>
+              {% if c.catalog_sequence_number = card.catalog_sequence_number %}
+              <a href="{% url "cardurl" c.box.catalog.slug c.box.sequence_number c.catalog_sequence_number %}" class="selected">#{{c.catalog_sequence_number}}: {{c.name}}</a>
+              {% else %}
+              <a href="{% url 'cardurl' c.box.catalog.slug c.box.sequence_number c.catalog_sequence_number %}">{{c.catalog_sequence_number}}: {{c.name}}</a>
+              {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
         </div>
       </div>
 

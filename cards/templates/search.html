@@ -23,14 +23,14 @@
           <h2 id="result">Sökresultat</h2>
           <table id="result" class="table table-striped">
             <tr>
-              <th>Kortnr</th>
+              <th>Kortnr.</th>
               <th>Text</th>
               <th>Låda</th>
             </tr>
             {% for card in result %}
             <tr>
-              <td>{{card.catalog_sequence_number}}</td>
-              <td><a href="{% url "cardurl" card.box.catalog.slug card.box.sequence_number card.catalog_sequence_number %}">{{card.ocr_text}}</a></td>
+              <td><a href="{% url "cardurl" card.box.catalog.slug card.box.sequence_number card.catalog_sequence_number %}">{{card.catalog_sequence_number}} {{card.name}}</a></td>
+              <td>{{card.ocr_text}}</td>
               <td>{{card.box.label}}</td>
             </tr>
             {% endfor %}
