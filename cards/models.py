@@ -15,6 +15,7 @@ class Catalog(models.Model):
         verbose_name_plural = u"Kataloger"
 
 
+
 class Box(models.Model):
     folder_name = models.CharField(max_length=255, unique=True)
     sequence_number = models.IntegerField(db_index=True)
@@ -32,6 +33,7 @@ class Box(models.Model):
 	ordering = ['sequence_number']
 
 
+
 class Card(models.Model):
     name = models.CharField(max_length=255, db_index=True) #(first line from OCR)
     filename = models.CharField(max_length=255)
@@ -42,20 +44,27 @@ class Card(models.Model):
     box = models.ForeignKey(Box, related_name="cards")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    signum = models.ForeignKey(Signum, related_name="cards")
 
+    # Fields with manual transcriptions
     name_tr = models.CharField(max_length=255, db_index=True)
     arr_tr = models.CharField(max_length=255, db_index=True)
     pseudonym_tr = models.CharField(max_length=255, db_index=True)
     title_tr = models.CharField(max_length=255, db_index=True)
     comment = models.TestField()
 
-    signum = models.ForeignKey(Signum, related_name="cards")
+    # readonly field to show preview pic in django admin interface
+    def image_tag(self):
+        return u'<img src="/static/alfa/%s" />' % (self.box.folder_name + "/" + self.filename.replace(".jpg", "_view500.jpg"))
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
 
     class Meta:
         verbose_name = u"Kort"
         verbose_name_plural = u"Kort"
 
 	ordering = ['catalog_sequence_number']
+
 
 
 class Classification(models.Model):
