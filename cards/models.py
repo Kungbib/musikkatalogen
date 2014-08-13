@@ -62,7 +62,7 @@ class Card(models.Model):
     arr_tr = models.CharField(max_length=255, db_index=True)
     pseudonym_tr = models.CharField(max_length=255, db_index=True)
     title_tr = models.CharField(max_length=255, db_index=True)
-    comment = models.TestField()
+    comment = models.TextField()
 
     # readonly field to show preview pic in django admin interface
     def image_tag(self):
