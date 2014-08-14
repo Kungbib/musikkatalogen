@@ -37,8 +37,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6 card" style="text-align:center">
-          <h1>Kort #{{card.catalog_sequence_number}}{% if card.name %}: {{card.name}}{% endif %}</h1>
+        <div class="col-md-6 card">
+          <h1>#{{card.catalog_sequence_number}}{% if card.name %}: {{card.name}}{% endif %}</h1>
           <a href="/static/alfa/{{fullres_image_url}}"><img src="/static/alfa/{{image_url}}" style="width:400px" alt="{{card.name}} {{card.ocr_text}}"></a>
         </div>
         <div class="col-md-3">
@@ -73,9 +73,16 @@
           </div>
           <hr>
           {% endif %}
-          <p>Låda: <a href="/box/{{card.box.sequence_number}}/">{{card.box.label}}</a></p>
-          <p>Bildfil: {{card.filename}}</p>
-          <p>Uppdaterad: {{card.updated_at}}</p>
+          <dl>
+            <dt class="cardno">Kortnr:</dt>
+            <dd>{{card.catalog_sequence_number}}</dd>
+            <dt class="boxno">Låda:</dt>
+            <dd>{{card.box.sequence_number}} {{card.box.label}}</dd>
+            <dt class="img_filename">Bildfil:</dt>
+            <dd>{{card.filename}}</dd>
+            <dt class="updated">Uppdaterad:</dt>
+            <dd>{{card.updated_at}}</dd>
+          </dl>
         </div>
         <div class="col-md-3">
           <h2>Låda {{card.box.label}}</h2>

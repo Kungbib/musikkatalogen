@@ -41,7 +41,7 @@ class Box(models.Model):
     class Meta:
         verbose_name = u"Låda"
         verbose_name_plural = u"Lådor"
-	ordering = ['sequence_number']
+        ordering = ['sequence_number']
 
 
 
@@ -66,12 +66,11 @@ class Card(models.Model):
 
     # readonly field to show preview pic in django admin interface
     def image_tag(self):
-        return u'<img src="/static/alfa/%s" />' % (self.box.folder_name + "/" + self.filename.replace(".jpg", "_view500.jpg"))
-    image_tag.short_description = 'Image'
+        return u'<img alt="Kort %s" src="/static/alfa/%s" />' % (self.name, self.box.folder_name + "/" + self.filename.replace(".jpg", "_view500.jpg"))
+    image_tag.short_description = 'Bild'
     image_tag.allow_tags = True
 
     class Meta:
         verbose_name = u"Kort"
         verbose_name_plural = u"Kort"
-
-	ordering = ['catalog_sequence_number']
+        ordering = ['catalog_sequence_number']
