@@ -7,28 +7,28 @@
           <ul class="pagination pagination-lg">
             <li>
             {% if previous10_card %}
-              <a href="{% url "cardurl" previous10_card.box.catalog.slug previous10_card.box.sequence_number previous10_card.catalog_sequence_number %}">-10</a>
+              <a href="{% url "cardurl" previous10_card.box.catalog.slug previous10_card.catalog_sequence_number %}">-10</a>
             {% else %}
               <a href="#" class="disabled">-10</a>
             {% endif %}
             </li>
             <li>
             {% if previous_card %}
-              <a href="{% url "cardurl" previous_card.box.catalog.slug previous_card.box.sequence_number previous_card.catalog_sequence_number %}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+              <a href="{% url "cardurl" previous_card.box.catalog.slug previous_card.catalog_sequence_number %}"><span class="glyphicon glyphicon-chevron-left"></span></a>
             {% else %}
               <a href="#"><span class="disabled glyphicon glyphicon-chevron-left"></span></a>
             {% endif %}
            </li>
            <li>
             {% if next_card %}
-              <a href="{% url "cardurl" next_card.box.catalog.slug next_card.box.sequence_number next_card.catalog_sequence_number %}"><span class="glyphicon glyphicon-chevron-right"></span></a>
+              <a href="{% url "cardurl" next_card.box.catalog.slug next_card.catalog_sequence_number %}"><span class="glyphicon glyphicon-chevron-right"></span></a>
             {% else %}
               <a href="#"><span class="disabled glyphicon glyphicon-chevron-right"></span></a>
             {% endif %}
             </li>
             <li>
             {% if next10_card %}
-              <a href="{% url "cardurl" next10_card.box.catalog.slug next10_card.box.sequence_number next10_card.catalog_sequence_number %}">+10</a>
+              <a href="{% url "cardurl" next10_card.box.catalog.slug next10_card.catalog_sequence_number %}">+10</a>
             {% else %}
               <a href="#" class="disabled">+10</span></a>
             {% endif %}
@@ -90,9 +90,9 @@
             {% for c in box_cards %}
               <li>
               {% if c.catalog_sequence_number = card.catalog_sequence_number %}
-              <a href="{% url "cardurl" c.box.catalog.slug c.box.sequence_number c.catalog_sequence_number %}" class="selected">#{{c.catalog_sequence_number}}: {{c.name}}</a>
+              <a href="{% url "cardurl" c.box.catalog.slug c.catalog_sequence_number %}" class="selected">#{{c.catalog_sequence_number}}: {{c.name}}</a>
               {% else %}
-              <a href="{% url 'cardurl' c.box.catalog.slug c.box.sequence_number c.catalog_sequence_number %}">{{c.catalog_sequence_number}}: {{c.name}}</a>
+              <a href="{% url 'cardurl' c.box.catalog.slug c.catalog_sequence_number %}">{{c.catalog_sequence_number}}: {{c.name}}</a>
               {% endif %}
               </li>
             {% endfor %}

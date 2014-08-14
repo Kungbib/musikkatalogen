@@ -32,11 +32,11 @@ def search(request):
     return render_to_response('search.html', locals())
 
 
-def browse(request, catalog_slug, box_sequence_number, card_catalog_sequence_number):
+def browse(request, catalog_slug, card_catalog_sequence_number):
     catalog = Catalog.objects.get(slug=catalog_slug)
-    box = Box.objects.get(catalog=catalog, sequence_number=box_sequence_number)
+    card = Card.objects.get(catalog_sequence_number=card_catalog_sequence_number)
+    box = card.box
 
-    card = Card.objects.get(box=box, catalog_sequence_number=card_catalog_sequence_number)
 
     box_cards = box.cards.all()
     image_url = box.folder_name + "/" + card.filename.replace(".jpg", "_view500.jpg")

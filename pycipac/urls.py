@@ -15,5 +15,5 @@ urlpatterns = patterns('',
     url(r'^search/$', views.search, name='search'),
     url(r'^om/$', views.about, name='about'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^(?P<catalog_slug>[a-z]+)/(?P<box_sequence_number>\d+)/(?P<card_catalog_sequence_number>[0-9a-z]+)/$', views.browse, name='cardurl'),
+    url(r'^(?P<catalog_slug>[a-z]+)/(?P<card_catalog_sequence_number>[0-9a-z]+)/$', views.browse, name='cardurl'),
 )

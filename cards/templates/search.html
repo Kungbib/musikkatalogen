@@ -29,7 +29,7 @@
             </tr>
             {% for card in result %}
             <tr>
-              <td><a href="{% url "cardurl" card.box.catalog.slug card.box.sequence_number card.catalog_sequence_number %}">{{card.catalog_sequence_number}} {{card.name}}</a></td>
+              <td><a href="{% url "cardurl" card.box.catalog.slug card.catalog_sequence_number %}">{{card.catalog_sequence_number}} {{card.name}}</a></td>
               <td>{{card.ocr_text}}</td>
               <td>{{card.box.label}}</td>
             </tr>
