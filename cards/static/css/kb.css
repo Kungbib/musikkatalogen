@@ -184,20 +184,11 @@ nav.kb-nav {
   border-top: 1px solid #e5e5e5;
 }
 
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
- .logo {
-   display:none;
- }
 
- .banner {
-  font-size: 1em;
-  font-weight: bold;
-  text-align:center;
-  float:none;
- }
+.preview {
+  width: 100%;
 }
+
 
 li a.disabled {
   background-color: #f3f3f3;
@@ -211,3 +202,25 @@ li a.disabled {
   .box-shadow(none);
   background-color: #f3f3f3;
 }
+
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+ .logo {
+   display:none;
+ }
+
+ .banner {
+  font-size: 1em;
+  font-weight: bold;
+  text-align:center;
+  float:none;
+ }
+
+ .preview {
+   max-width: 400px;
+ }
+}
+
+

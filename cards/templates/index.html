@@ -12,11 +12,13 @@
           <h2>Sök i katalogen</h2>
           <p>Observera att sökningen sker i det automattolkade textunderlaget. Flera av korten är handskrivna och går inte att söka i. För bästa resultat använd endast ett sökord.</p>
           <form class="form-inline global-search" action="/search/" role="search">
-              <div class="form-group col-xs-8">
+              <div class="form-group col-xs-8 col-md-4">
                   <label class="sr-only" for="q">Sök efter</label>
-                  <input type="text" class="form-control" id="q" name="q" value="{{query}}" style="width:300px" placeholder="Ange sökord">
+                  <input type="text" class="search form-control" id="q" name="q" value="{{query}}" placeholder="Ange sökord">
               </div>
-              <button type="submit" id="s" class="btn btn-primary">Sök <i class="glyphicon glyphicon-search"></i></button>
+              <div class="col-xs-4 col-md-8">
+                <button type="submit" id="s" class="btn btn-primary">Sök <i class="glyphicon glyphicon-search"></i></button>
+              </div>
           </form>
         </div>
         <div class="col-md-4">
