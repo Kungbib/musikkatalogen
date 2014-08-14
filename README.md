@@ -3,7 +3,8 @@ PYCIPAC
 =======
 
 This is a lightweight web application of a Card-Image Public Access Catalog (CIPAC).
-It is used to display scanned catalog cards.
+It is used to display scanned library catalog cards. It was written in a haste
+as a proof of concept and you will probably find numerous bugs.
 
 
 Installation
@@ -31,10 +32,9 @@ $ python manage.py import <path/to/folder> <catalog_slug>
 (repeat for all folders)
 
 
-Generate sequence numbers for all cards in all boxes:
+Generate global sequence numbers for all cards in the catalog:
 
 $ python manage.py resequence <catalog_slug>
-
 
 
 Start server:
