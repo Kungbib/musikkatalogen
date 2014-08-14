@@ -14,6 +14,7 @@ Install prerequisites for Django 1.6.5. Create a database in MySql with the corr
 
 > CREATE DATABASE pycipac CHARACTER SET utf8 collate utf8_swedish_ci;
 
+Add a Django settings file and modify it with your settings.
 
 Run table migrations:
 

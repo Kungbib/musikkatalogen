@@ -203,6 +203,17 @@ li a.disabled {
   background-color: #f3f3f3;
 }
 
+td.cardid {
+  min-width:180px;
+}
+td.box {
+  white-space: nowrap;
+}
+
+dd {
+  margin-bottom: 0.5em;
+}
+
 
 @media only screen
 and (min-device-width : 320px)
@@ -221,6 +232,10 @@ and (max-device-width : 480px) {
  .preview {
    max-width: 400px;
  }
+
+  td.cardid {
+    min-width:none;
+  }
 }
 
 
