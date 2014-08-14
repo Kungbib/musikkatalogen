@@ -66,3 +66,8 @@ def browse(request, catalog_slug, box_sequence_number, card_catalog_sequence_num
 
     return render_to_response('browse.html', locals())
 
+
+
+def about(request):
+
+    return render_to_response('about.html', locals())
