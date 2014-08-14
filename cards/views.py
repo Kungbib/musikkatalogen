@@ -64,6 +64,18 @@ def browse(request, catalog_slug, card_catalog_sequence_number):
     except Card.DoesNotExist:
         next10_card = None
 
+
+    # next and previous box
+    try:
+        previous_box_card = Card.objects.filter(box__sequence_number = box.sequence_number - 1)[0]
+    except:
+        previous_box_card = None
+
+    try:
+        next_box_card = Card.objects.filter(box__sequence_number = box.sequence_number + 1)[0]
+    except:
+        next_box_card = None
+
     return render_to_response('browse.html', locals())
 
 
