@@ -1,12 +1,17 @@
 {% extends "base.html" %}
+
+{% block head_title %}
+Sök i musikkatalogen
+{% endblock %}
+
 {% block content %}
 
       <div class="row">
         <div class="col-md-12" style="text-align:center">
           <h1>Sök i katalogen</h1>
-          <p>OBS. Fritextsökningen sker i maskinellt tolkad text. Det innebär att handskrivna kort inte ingår i underlaget och att många poster kan missas.</p>
+          <p>Observera att sökningen sker i det automattolkade textunderlaget. Flera av korten är handskrivna och går inte att söka i. För bästa resultat använd endast ett sökord.</p>
 
-          <form class="form-inline global-search" action="/search/" role="form">
+          <form class="form-inline global-search" action="/search/" role="search">
               <div class="form-group">
                   <label class="sr-only" for="q">Sök efter</label>
                   <input type="search" class="form-control" id="q" name="q" value="{{query}}" placeholder="Ange sökord">

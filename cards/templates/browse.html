@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+
+{% block head_title %}
+#{{card.catalog_sequence_number}} {{card.name}} - Musikkatalogen
+{% endblock %}
+
 {% block content %}
 
       <div class="row">
@@ -84,7 +89,7 @@
             <dd>{{card.updated_at}}</dd>
           </dl>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" role="complementary">
           <h2>Låda {{card.box.label}}</h2>
           <ul class="list-unstyled box">
             {% for c in box_cards %}
