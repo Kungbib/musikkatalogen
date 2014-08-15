@@ -25,7 +25,7 @@ class Command(BaseCommand):
 
         catalog_boxes = catalog.boxes.all().order_by('sequence_number')
 
-        catalog_sequence_number = 0
+        catalog_sequence_number = 1
 
         for box in catalog_boxes:
             for card in box.cards.all().order_by('sequence_number'):
