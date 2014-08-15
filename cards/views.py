@@ -42,9 +42,9 @@ def browse(request, catalog_slug, card_catalog_sequence_number):
     fullres_image_url = box.folder_name + "/" + card.filename
 
     # find next and previous card
-    if card.catalog_sequence_number > 0:
+    try:
         previous_card = Card.objects.get(box__catalog__slug=catalog_slug, catalog_sequence_number=card.catalog_sequence_number - 1)
-    else:
+    except Card.DoesNotExist:
         previous_card = None
 
     try:
@@ -53,9 +53,9 @@ def browse(request, catalog_slug, card_catalog_sequence_number):
         next_card = None
 
     # find +10 and -10 cards
-    if card.catalog_sequence_number > 10:
+    try:
         previous10_card = Card.objects.get(box__catalog__slug=catalog_slug, catalog_sequence_number=card.catalog_sequence_number - 10)
-    else:
+    except Card.DoesNotExist:
         previous10_card = None
 
     try:
