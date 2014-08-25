@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block head_opengraph %}
-    <meta property="og:url" content="https://musikkatalogen.kb.se" />
+<meta property="og:url" content="{{request.build_absolute_uri}}" />
     <meta property="og:title" content="Kort {{card.catalog_sequence_number}}: {{card.name}}" />
     <meta property="og:description" content="{{card.name}} Katalogkort {{card.catalog_sequence_number}} i Kungl. Bibliotekets musikkatalog." />
     <meta property="og:image" content="https://musikkatalogen.kb.se/static/alfa/{{fullres_image_url}}" />
