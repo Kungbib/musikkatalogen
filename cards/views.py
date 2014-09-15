@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from cards.models import *
 from django.db.models import Q
+from haystack.query import SearchQuerySet
+from haystack.inputs import AutoQuery, Exact, Clean
 
 def index(request):
 
@@ -20,11 +22,7 @@ def search(request):
     if request.GET.get('q'):
         query = request.GET.get('q', None).strip()
         if query:
-            result = Card.objects.filter( Q(ocr_text__icontains=query) |
-                    Q(name__icontains=query) |
-                    Q(arr_tr__icontains=query) |
-                    Q(pseudonym_tr__icontains=query) |
-                    Q(title_tr__icontains=query))[:100]
+            result = SearchQuerySet().filter(content=AutoQuery(query))[:100]
         else:
             result = None
 

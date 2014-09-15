@@ -1,0 +1,10 @@
+{{ object.name }}
+{{ object.name_tr|default_if_none:"" }}
+{{ object.arr_tr|default_if_none:"" }}
+{{ object.pseudonym_tr|default_if_none:"" }}
+{{ object.title_tr|default_if_none:"" }}
+
+{{ object.catalog_sequence_number }}
+
+{{ object.ocr_text }}
+

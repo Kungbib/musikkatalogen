@@ -34,9 +34,9 @@ Sök i musikkatalogen
             </tr>
             {% for card in result %}
             <tr>
-              <td class="cardid"><a href="{% url "cardurl" card.box.catalog.slug card.catalog_sequence_number %}">{{card.catalog_sequence_number}} {{card.name}}</a></td>
-              <td>{{card.ocr_text}}</td>
-              <td class="box">{{card.box.label}}</td>
+              <td class="cardid"><a href="{% url "cardurl" card.catalog_slug card.catalog_sequence_number %}">{{card.catalog_sequence_number}} {{card.name}}</a></td>
+              <td>{{card.text}}</td>
+              <td class="box">{{card.box_label}}</td>
             </tr>
             {% endfor %}
           </table>

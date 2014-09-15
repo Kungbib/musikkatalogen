@@ -38,6 +38,28 @@ Generate global sequence numbers for all cards in the catalog:
 $ python manage.py resequence <catalog_slug>
 
 
+Configure Haystack + Elasticsearch (add to settings.py)
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'musikkatalogen',
+    },
+}
+
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+HAYSTACK_MAX_RESULTS = 50
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 50
+
+Start Elasticsearch
+
+
+Build search index:
+
+$ python manage.py rebuild_index
+
+
 Start server:
 
 $ python manage.py runserver
