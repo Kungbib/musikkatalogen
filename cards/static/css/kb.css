@@ -225,6 +225,10 @@ dd {
   max-width:100%;
 }
 
+a.question {
+  text-decoration:none;
+}
+
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 480px) {

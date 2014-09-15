@@ -14,58 +14,8 @@
 
 {% block content %}
 
-      <div class="row">
-        <div class="col-md-12" style="text-align:center">
-          <ul class="pagination pagination-lg">
+      {% include "_paginator.html" %}
 
-            <li>
-            {% if previous_box_card %}
-              <a href="{% url "cardurl" previous_box_card.box.catalog.slug previous_box_card.catalog_sequence_number %}">Föreg. låda</a>
-            {% else %}
-              <a href="#" class="disabled">Föreg. låda</a>
-            {% endif %}
-            </li>
-
-            <li>
-            {% if previous10_card %}
-              <a href="{% url "cardurl" previous10_card.box.catalog.slug previous10_card.catalog_sequence_number %}">-10</a>
-            {% else %}
-              <a href="#" class="disabled">-10</a>
-            {% endif %}
-            </li>
-            <li>
-            {% if previous_card %}
-              <a href="{% url "cardurl" previous_card.box.catalog.slug previous_card.catalog_sequence_number %}"><span class="glyphicon glyphicon-chevron-left"></span></a>
-            {% else %}
-              <a href="#" class="disabled"><span class="disabled glyphicon glyphicon-chevron-left"></span></a>
-            {% endif %}
-           </li>
-           <li>
-            {% if next_card %}
-              <a href="{% url "cardurl" next_card.box.catalog.slug next_card.catalog_sequence_number %}"><span class="glyphicon glyphicon-chevron-right"></span></a>
-            {% else %}
-              <a href="#" class="disabled"><span class="disabled glyphicon glyphicon-chevron-right"></span></a>
-            {% endif %}
-            </li>
-
-            <li>
-            {% if next10_card %}
-              <a href="{% url "cardurl" next10_card.box.catalog.slug next10_card.catalog_sequence_number %}">+10</a>
-            {% else %}
-              <a href="#" class="disabled">+10</span></a>
-            {% endif %}
-            </li>
-            <li>
-
-            {% if next_box_card %}
-              <a href="{% url "cardurl" next_box_card.box.catalog.slug next_box_card.catalog_sequence_number %}">Nästa låda</a>
-            {% else %}
-              <a href="#" class="disabled">Nästa låda</span></a>
-            {% endif %}
-            </li>
-          </ul>
-        </div>
-      </div>
       <div class="row">
         <div class="col-md-6 card">
           <h1>#{{card.catalog_sequence_number}}: {{card.name}}</h1>
@@ -93,6 +43,7 @@
           <h2>OCR-text</h2>
           <p>{{card.ocr_text|linebreaks}}</p>
 
+
           <div class="panel panel-warning">
             <div class="panel-heading">
               Konstig text ovan?
@@ -103,6 +54,7 @@
           </div>
           <hr>
           {% endif %}
+          <p><a class="btn btn-primary btn-block question" href="mailto:hkb@kb.se?subject=Fråga om kort {{card.catalog_sequence_number}} i musikkatalogen" role="button"><span class="glyphicon glyphicon-info-sign"></span> Fråga om detta kort</a></p>
           <dl>
             <dt class="cardno">Kortnr:</dt>
             <dd>{{card.catalog_sequence_number}}</dd>
@@ -129,6 +81,8 @@
           </ul>
         </div>
       </div>
+
+      {% include "_paginator.html" %}
 
       {% include "_footer.html" %}
 

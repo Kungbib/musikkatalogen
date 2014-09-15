@@ -6,7 +6,7 @@
           <h1>Musikkatalogen</h1>
           <p>Digitaliserad version av korten i Kungliga Bibliotekets äldre musikkatalog.</p>
           <h2>Sök i katalogen</h2>
-          <p>Observera att sökningen sker i det automattolkade textunderlaget. Flera av korten är handskrivna och går inte att söka i. För bästa resultat använd endast ett sökord.</p>
+          <p>Observera att sökningen sker i det automattolkade textunderlaget. Flera av korten är handskrivna och går inte att fritextsöka i.</p>
           <form class="form-inline global-search" action="/search/" role="search">
               <div class="form-group col-xs-8 col-md-4">
                   <label class="sr-only" for="q">Sök efter</label>
@@ -27,7 +27,7 @@
       <div class="row">
         <div class="col-md-12">
           <h2>Alfabetiskt index</h2>
-          <p>Utgå från det alfabetiska indexet för att hitta verk av en specifik upphovsman.</p>
+          <p>Utgå från det alfabetiska indexet genom att välja en bokstav nedan.</p>
           <ul class="pagination pagination-sm">
             {% for card in index_cards %}
             <li>
