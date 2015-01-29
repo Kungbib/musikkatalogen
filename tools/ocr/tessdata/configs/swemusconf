@@ -1,0 +1,4 @@
+load_freq_dawg       1
+load_system_dawg     1
+user_words_suffix    user-words
+tessedit_char_whitelist   1234567890abcdeéfghijklmnopqrstuvwxyzöäåABCDEFGHIJKLMNOPQRSTUVWXYZÖÄÅ&"-=.,:;!?[]()
