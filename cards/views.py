@@ -17,17 +17,6 @@ def index(request):
     return render_to_response('index.html', locals())
 
 
-def search(request):
-    # get query
-    if request.GET.get('q'):
-        query = request.GET.get('q', None).strip()
-        if query:
-            result = SearchQuerySet().filter(content=AutoQuery(query))[:100]
-        else:
-            result = None
-
-    return render_to_response('search.html', locals())
-
 
 def browse(request, catalog_slug, card_catalog_sequence_number):
     catalog = Catalog.objects.get(slug=catalog_slug)

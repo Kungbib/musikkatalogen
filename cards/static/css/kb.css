@@ -1,3 +1,7 @@
+.alert {
+  margin-top:1em;
+}
+
 ul.box li a {
   text-decoration: none;
 }
