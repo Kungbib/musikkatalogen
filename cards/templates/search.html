@@ -6,8 +6,9 @@ Sök i musikkatalogen
 
 {% block content %}
 
+    <div class="container card" role="main">
       <div class="row">
-        <div class="col-md-12" style="text-align:center">
+        <div class="col-md-12">
           <h1>Sök i katalogen</h1>
           <p>Observera att sökningen sker i det automattolkade textunderlaget. Flera av korten är handskrivna och går inte att söka i.</p>
 
@@ -16,13 +17,12 @@ Sök i musikkatalogen
                   <label class="sr-only" for="q">Sök efter</label>
                   <input type="search" class="form-control" id="q" name="q" value="{{query}}" placeholder="Ange sökord">
               </div>
-              <button type="submit" id="s" class="btn btn-primary">Sök <i class="glyphicon glyphicon-search"></i>
-              </button>
+              <button type="submit" id="s" class="btn btn-primary">Sök</button>
           </form>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row searchresult">
         <div class="col-md-12 table-responsive">
         {% if result %}
           <h2 id="result">Sökresultat</h2>
@@ -49,6 +49,5 @@ Sök i musikkatalogen
         {% endif %}
         </div>
       </div>
-
-      {% include "_footer.html" %}
+    </div>
 {% endblock %}

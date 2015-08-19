@@ -14,36 +14,57 @@
 
 {% block content %}
 
+    <div class="container card" role="main">
       {% include "_paginator.html" %}
 
       <div class="row">
-        <div class="col-md-6 card">
-          <h1>#{{card.catalog_sequence_number}}: {{card.name}}</h1>
+        <div class="col-md-12">
+          <h1 class="page-header">#{{card.catalog_sequence_number}}: {{card.name}}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <a href="/static/alfa/{{fullres_image_url}}"><img class="preview" src="/static/alfa/{{image_url}}"  alt="{{card.name}} {{card.ocr_text}}"></a>
         </div>
         <div class="col-md-3">
+            <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Information</h3>
+                  </div>
+                  <div class="panel-body">
           <dl>
+
+          <dt class="cardno">Kortnr:</dt>
+          <dd>{{card.catalog_sequence_number}}</dd>
+          <dt class="boxno">Låda:</dt>
+          <dd>{{card.box.sequence_number}} {{card.box.label}}</dd>
           {% if card.arr_tr %}
           <dt>Arrangemang:</dt>
-          <dd>{{card.arr_tr}}</dd>
+          <dd class="arr">{{card.arr_tr}}</dd>
           {% endif %}
 
           {% if card.pseudonym_tr %}
           <dt>Pseudonym:</dt>
-          <dd>{{card.pseudonym_tr}}</dd>
+          <dd class="pseud">{{card.pseudonym_tr}}</dd>
           {% endif %}
 
           {% if card.title_tr %}
           <dt>Verk:</dt>
-          <dd>{{card.title_tr}}</dd>
+          <dd class="work">{{card.title_tr}}</dd>
           {% endif %}
-          </dl>
 
           {% if card.ocr_text %}
-          <h2>OCR-text</h2>
-          <p>{{card.ocr_text|linebreaks}}</p>
+          <dt>OCR-text:</dt>
+          <dd class="ocr">{{card.ocr_text|linebreaks}}</dd>
+          {% endif %}
 
+          <dt>Rättigheter:</dt>
+            <dd><a rel="license" href="http://creativecommons.org/publicdomain/mark/1.0/"><img id="license" src="/static/img/pd.svg" alt="Public Domain"></a></dd>
+          </dl>
+                  </div>
+            </div>
 
+          {% if card.ocr_text %}
           <div class="panel panel-warning">
             <div class="panel-heading">
               Konstig text ovan?
@@ -52,19 +73,9 @@
               <p>Den automatiska konverteringen kan ha skapat felaktiga tecken.</p>
             </div>
           </div>
-          <hr>
           {% endif %}
-          <p><a class="btn btn-primary btn-block question" href="mailto:hkb@kb.se?subject=Fråga om kort {{card.catalog_sequence_number}} i musikkatalogen" role="button"><span class="glyphicon glyphicon-info-sign"></span> Fråga om detta kort</a></p>
-          <dl>
-            <dt class="cardno">Kortnr:</dt>
-            <dd>{{card.catalog_sequence_number}}</dd>
-            <dt class="boxno">Låda:</dt>
-            <dd>{{card.box.sequence_number}} {{card.box.label}}</dd>
-            <dt class="img_filename">Bildfil:</dt>
-            <dd>{{card.filename}}</dd>
-            <dt class="updated">Uppdaterad:</dt>
-            <dd>{{card.updated_at}}</dd>
-          </dl>
+
+          <p><a class="btn btn-primary btn-block question" href="mailto:hkb@kb.se?subject=Fråga om kort {{card.catalog_sequence_number}} i musikkatalogen" role="button">Fråga om detta kort</a></p>
         </div>
         <div class="col-md-3" role="complementary">
           <h2>Låda {{card.box.sequence_number}} {{card.box.label}}</h2>
@@ -83,7 +94,6 @@
       </div>
 
       {% include "_paginator.html" %}
-
-      {% include "_footer.html" %}
+    </div>
 
 {% endblock %}

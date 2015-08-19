@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block head_title %}Musikkatalogen{% endblock %}</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link href="//kungbib.github.io/frontend-guide/css/kb-style.css" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/kb.css' %}" />
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -19,26 +19,23 @@
     {% endblock %}
   </head>
   <body>
-    <div class="kb-masthead">
+    <nav class="navbar bg-pastel-muted-blue text-white">
       <div class="container">
-        <div class="logo">
-          <a href="/" class="kb-nav-item"><img src="{% static 'img/kb_logo_white.png' %}" alt="Till startsida" /></a>
+        <div class="navbar-header">
+          <a class="navbar-brand navbar-logo" href="/"><img src="//kungbib.github.io/frontend-guide/assets/kb_logo_white.svg" alt="Till startsidan"/></a>
+          <a class="navbar-brand" href="/">Musikkatalogen (beta)</a>
         </div>
-        <div class="banner">
-          <a href="/">Musikkatalogen (beta)</a>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/om/">Om musikkatalogen</a></li>
+            </ul>
         </div>
-        <div class="pull-right">
-        <nav class="kb-nav">
-          <a class="kb-nav-item active" href="/">Startsida</a>
-          <a class="kb-nav-item" href="/om/">Om katalogen</a>
-          <a class="kb-nav-item" href="http://www.kb.se/">www.kb.se</a>
-        </nav>
       </div>
-      </div>
-    </div>
-    <div class="container" role="main">
+    </nav>
+
     {% block content %}
     {% endblock %}
-    </div>
+
+    {% include "_footer.html" %}
   </body>
 </html>
