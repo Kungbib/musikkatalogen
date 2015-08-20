@@ -3,7 +3,7 @@
 
 <div class="jumbotron bg-happy-muted-light-blue">
   <div class="container">
-    <h1 class="text-small text-black calltoaction">Sök i Kungl. Bibliotekets äldre musikkatalog</h1>
+    <h1 class="text-small text-black calltoaction">Sök i Kungl. bibliotekets äldre musikkatalog</h1>
     <form class="form-horizontal" method="get" action="/search/" role="search">
       <div class="form-group">
         <div class="col-md-3"></div>
@@ -17,13 +17,14 @@
         <div class="col-md-3"></div>
       </div>
     </form>
+    <div class="col-md-12 col-xs-12"><a href="#alfa" class="text-black">&hellip;eller bläddra via alfabetiskt index.</a></div>
   </div>
 </div>
 
     <div class="container" role="main">
       <div class="row">
         <div class="col-md-6">
-          <h1>Om Musikkatalogen</h1>
+          <h1>Om musikkatalogen</h1>
 
           <p>Musikkatalogen omfattar tonsättningar från slutet av 1700-talet fram till 1975, då man började katalogisera musiktrycken i den <a href="http://libris.kb.se">nationella bibliotekskatalogen Libris</a>.</p>
 
@@ -37,7 +38,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <h2>Alfabetiskt index</h2>
+          <h2 id="alfa">Alfabetiskt index</h2>
           <p>Utgå från det alfabetiska indexet genom att välja en bokstav nedan.</p>
           <ul class="pagination pagination-sm">
             {% for card in index_cards %}
