@@ -2,21 +2,22 @@
 {% load staticfiles %}
 
 {% block head_title %}
-Om musikkatalogen
+Ett fel har inträffat
 {% endblock %}
 
 {% block content %}
 
-      <div class="row">
-        <div class="col-md-8">
-          <h1>Något gick fel :-(</h1>
-          <p>Beklagar, men något blev fel i systemet. Vi har loggat problemet och ska försöka fixa det.</p>
-        </div>
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Något gick fel :-(</h1>
+      <p>Beklagar, men något blev fel i systemet. Vi har loggat problemet och ska försöka fixa det.</p>
+    </div>
 
-        <div class="col-md-4">
-        </div>
-      </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+</div>
 
-      {% include "_footer.html" %}
 
 {% endblock %}
