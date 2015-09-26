@@ -14,11 +14,7 @@
 
 {% block content %}
 
-    <div class="container card" role="main" vocab="http://schema.org/" typeof="ImageObject">
-      <meta property="contentUrl" content="https://musikkatalogen.kb.se/static/alfa/{{fullres_image_url}}" />
-      <meta property="isFamilyFriendly" content="true" />
-      <meta property="representativeOfPage" content="true" />
-      <meta property="inLanguage" content="sv" />
+    <div class="container card" role="main" vocab="http://schema.org/" prefix="xhv:http://www.w3.org/1999/xhtml/vocab#" typeof="ItemPage">
 
       {% include "_paginator.html" %}
 
@@ -28,8 +24,12 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
-          <a href="/static/alfa/{{fullres_image_url}}"><img class="preview" src="/static/alfa/{{image_url}}"  alt="{{card.name}} {{card.ocr_text}}"></a>
+        <div class="col-md-6" property="associatedMedia" typeof="ImageObject">
+          <meta property="isFamilyFriendly" content="true" />
+          <meta property="representativeOfPage" content="true" />
+          <meta property="inLanguage" content="sv" />
+          <meta property="license" content="http://creativecommons.org/publicdomain/mark/1.0/" />
+          <a property="contentUrl" href="/static/alfa/{{fullres_image_url}}"><img property="embedUrl" class="preview" src="/static/alfa/{{image_url}}"  alt="{{card.name}} {{card.ocr_text}}"></a>
         </div>
         <div class="col-md-3">
             <div class="panel panel-default">
@@ -64,7 +64,7 @@
           {% endif %}
 
           <dt>Rättigheter:</dt>
-            <dd><a rel="license" href="http://creativecommons.org/publicdomain/mark/1.0/"><img id="license" src="/static/img/pd.svg" alt="Public Domain"></a></dd>
+            <dd><a href="http://creativecommons.org/publicdomain/mark/1.0/"><img id="license" src="/static/img/pd.svg" alt="Public Domain"></a></dd>
           </dl>
                   </div>
             </div>

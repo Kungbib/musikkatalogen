@@ -19,16 +19,16 @@
       </li>
       <li class="pagination-previous">
         {% if previous_card %}
-        <a href="{% url "cardurl" previous_card.box.catalog.slug previous_card.catalog_sequence_number %}"><span aria-hidden="true">&laquo;</span></a>
+        <a property="xhv:previous" href="{% url "cardurl" previous_card.box.catalog.slug previous_card.catalog_sequence_number %}"><span aria-hidden="true">&laquo;</span></a>
         {% else %}
-        <a href="#" class="disabled"><span class="disabled glyphicon glyphicon-chevron-left"></span></a>
+        <a href="#" class="disabled"><span aria-hidden="true">&laquo;</span></a>
         {% endif %}
       </li>
       <li class="pagination-next">
         {% if next_card %}
-        <a href="{% url "cardurl" next_card.box.catalog.slug next_card.catalog_sequence_number %}"><span aria-hidden="true">&raquo;</span></a>
+        <a property="xhv:next" href="{% url "cardurl" next_card.box.catalog.slug next_card.catalog_sequence_number %}"><span aria-hidden="true">&raquo;</span></a>
         {% else %}
-        <a href="#" class="disabled"><span class="disabled glyphicon glyphicon-chevron-right"></span></a>
+        <a href="#" class="disabled"><span aria-hidden="true">&raquo;</span></a>
         {% endif %}
       </li>
 
