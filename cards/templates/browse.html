@@ -49,9 +49,14 @@
           <dd>{{card.box.sequence_number}} {{card.box.label}}</dd>
           {% if card.arr_tr %}
             <dt>Arrangemang:</dt>
-            <dd property="musicArrangement" class="arr" typeof="Person">
-              <span property="name">{{card.arr_tr}}</span>
-              <meta property="sameAs" href="http://id.kb.se/some?type=Person&amp;q={{card.arr_tr|iriencode}}" />
+            <dd property="musicArrangement" class="arr" typeof="MusicComposition">
+              <div property="composer" typeof="Person">
+                <span property="name">{{card.arr_tr}}</span>
+                <meta property="sameAs" href="http://id.kb.se/some?type=Person&amp;q={{card.arr_tr|iriencode}}" />
+              </div>
+              {% if card.title_tr %}
+              <meta property="name" content="{{card.title_tr}}" lang="" />
+              {% endif %}
             </dd>
           {% endif %}
 
