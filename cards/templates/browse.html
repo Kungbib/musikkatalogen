@@ -15,7 +15,7 @@
 {% block content %}
 
     <div class="container card" role="main" vocab="http://schema.org/" prefix="xhv:http://www.w3.org/1999/xhtml/vocab#" typeof="ItemPage">
-      <meta property="isPartOf" content="/" />
+      <meta property="isPartOf" href="https://musikkatalogen.kb.se" />
       {% include "_paginator.html" %}
 
       <div class="row">
@@ -31,12 +31,16 @@
           <meta property="license" href="http://creativecommons.org/publicdomain/mark/1.0/" />
           <a property="contentUrl" href="/static/alfa/{{fullres_image_url}}"><img property="embedUrl" class="preview" src="/static/alfa/{{image_url}}"  alt="{{card.name}} {{card.ocr_text}}"></a>
         </div>
+{% if card.title_tr or card.arr_tr %}
+        <div class="col-md-3" property="mainEntity" typeof="MusicComposition" id="work">
+{% else %}
         <div class="col-md-3">
+{% endif %}
             <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Information</h3>
-                  </div>
-                  <div class="panel-body">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Information</h3>
+                </div>
+                <div class="panel-body">
           <dl>
 
           <dt class="cardno">Kortnr:</dt>
@@ -44,8 +48,11 @@
           <dt class="boxno">Låda:</dt>
           <dd>{{card.box.sequence_number}} {{card.box.label}}</dd>
           {% if card.arr_tr %}
-          <dt>Arrangemang:</dt>
-          <dd class="arr">{{card.arr_tr}}</dd>
+            <dt>Arrangemang:</dt>
+            <dd property="musicArrangement" class="arr" typeof="Person">
+              <span property="name">{{card.arr_tr}}</span>
+              <meta property="sameAs" href="http://id.kb.se/some?type=Person&amp;q={{card.arr_tr|iriencode}}" />
+            </dd>
           {% endif %}
 
           {% if card.pseudonym_tr %}
@@ -55,7 +62,7 @@
 
           {% if card.title_tr %}
           <dt>Verk:</dt>
-          <dd class="work">{{card.title_tr}}</dd>
+          <dd class="work" property="name" lang="">{{card.title_tr}}</dd>
           {% endif %}
 
           {% if card.ocr_text %}
@@ -63,8 +70,6 @@
           <dd class="ocr">{{card.ocr_text|linebreaks}}</dd>
           {% endif %}
 
-          <dt>Rättigheter:</dt>
-            <dd><a href="http://creativecommons.org/publicdomain/mark/1.0/"><img id="license" src="/static/img/pd.svg" alt="Public Domain"></a></dd>
           </dl>
                   </div>
             </div>
