@@ -90,7 +90,7 @@
           </div>
           {% endif %}
 
-          <p><a class="btn btn-primary btn-block question" onclick="javascript:_paq.push(['trackGoal', 1]);" href="mailto:musikkatalogen@kb.se?subject=Fråga om kort {{card.catalog_sequence_number}} i musikkatalogen" role="button">Fråga om detta kort</a></p>
+          <p><a class="btn btn-primary btn-block question" onclick="javascript:_paq.push(['trackGoal', 1]);" href="mailto:musikkatalogen@kb.se?subject=Fråga om kort {{card.catalog_sequence_number|urlencode}} ({{card.name|urlencode}}) i musikkatalogen&amp;body=%0D%0A%0D%0A%0D%0A%0D%0ANamn: {{card.name|urlencode}}%0D%0AKortlänk: {{request.build_absolute_uri|urlencode}}" role="button">Fråga om detta kort</a></p>
         </div>
         <div class="col-md-3" role="complementary">
           <h2>Låda {{card.box.sequence_number}} {{card.box.label}}</h2>
