@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="origin">
     <title>{% block head_title %}Musikkatalogen{% endblock %}</title>
     <link href="//kungbib.github.io/frontend-guide/css/kb-style.css" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/kb.css' %}" />
@@ -13,8 +14,8 @@
     <![endif]-->
     {% block head_opengraph %}
     <meta property="og:url" content="https://musikkatalogen.kb.se" />
-    <meta property="og:title" content="Musikkatalogen - Kungl. Biblioteket" />
-    <meta property="og:description" content="Digitaliserad version av den äldre musikkatalogen på Kungl. Biblioteket." />
+    <meta property="og:title" content="Musikkatalogen - Kungliga biblioteket" />
+    <meta property="og:description" content="Digitaliserad version av den äldre musikkatalogen på Kungliga biblioteket." />
     <meta property="og:image" content="https://musikkatalogen.kb.se/static/img/0092_alfa_20140708_0027_beskuren.jpg" />
     {% endblock %}
   </head>
@@ -52,6 +53,6 @@
       })();
     </script>
     <noscript><p><img src="//analytics.kb.se/piwik.php?idsite=39" style="border:0;" alt="" /></p></noscript>
-    <!-- End Piwik Code -->    
+    <!-- End Piwik Code -->
   </body>
 </html>
